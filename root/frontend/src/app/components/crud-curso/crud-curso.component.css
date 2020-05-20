@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.mat-row.hovered {
+    background: #eee;
+}
+
+.mat-row.highlighted {
+    background: lightblue;
+}
+
+.createShowP {
+    color: #730099;
+}

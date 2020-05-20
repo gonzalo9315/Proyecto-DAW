@@ -1,0 +1,18 @@
+label {
+    background-color: aliceblue;
+    color: black;
+}
+
+.selected {
+    background-color: lightblue !important;
+}
+
+
+/*
+tr:hover {
+    background-color: red !important;
+}
+
+tr:active {
+    background-color: lightblue !important;
+}*/

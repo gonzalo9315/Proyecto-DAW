@@ -1,0 +1,148 @@
+<div class="row d-flex justify-content-center modalWrapper">
+
+    <!-- Add Form-->
+    <div class="modal fade addNewInputs" id="modalAdd1" tabindex="-1" role="dialog" aria-labelledby="modalAdd" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold text-primary ml-5">Añadir nuevo usuario</h4>
+                    <button type="button" class="close text-primary" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+
+                    <form autocomplete="off" [formGroup]="forma" (ngSubmit)="create()">
+                        <div class="md-form mb-5" *ngFor="let item of keys">
+                            <input type="text" class="form-control" formControlName="{{ item }}" [class.is-invalid]="invalid(item) || onSubmit(item)">
+                            <label data-error="wrong" data-success="right" for="{{ item }}">{{ item }}</label>
+                            <!-- <span class="text-danger animated fadeIn" *ngIf="invalid(item) || onSubmit(item)">Debe ser mínimo de 8 caracteres</span> -->
+                            <span class="text-danger animated fadeIn" *ngIf="hasError(item, 'required')">Campo requerido</span>
+                            <span class="text-danger animated fadeIn" *ngIf="hasError(item, 'pattern')">Formato de email invalido</span>
+                            <span class="text-danger animated fadeIn" *ngIf="hasError(item, 'minlength')">Debe ser mínimo de 4 caracteres</span>
+                            <span class="text-danger animated fadeIn" *ngIf="hasError(item, 'confirmTipo')">Datos permitidos: alumno, profesor, direccion.</span>
+                        </div>
+                        <div class="md-form mb-5" *ngIf="place == 'usuarios'">
+                            <input type="password" class="form-control" formControlName="password" [class.is-invalid]="invalid('password') || onSubmit('password')">
+                            <label data-error="wrong" data-success="right" for="password">Contraseña</label>
+                            <span class="text-danger animated fadeIn" *ngIf="invalid('password') || onSubmit('password')">Debe ser mínimo de 8 caracteres</span>
+                        </div>
+                        <div class="md-form mb-5" *ngIf="place == 'usuarios'">
+                            <input type="password" class="form-control" formControlName="password_confirmation" [class.is-invalid]="invalid('password_confirmation') || onSubmit('password_confirmation')">
+                            <label data-error="wrong" data-success="right" for="password_confirmation">Confirmar contraseña</label>
+                            <span class="text-danger animated fadeIn" *ngIf="invalid('password_confirmation') || onSubmit('password_confirmation')">No coincide con la contraseña</span>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center buttonAddFormWrapper">
+                            <button type="submit" class="btn btn-outline-primary btn-block buttonAdd"><i class="fas fa-plus-square"></i> Añadir</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Form-->
+
+    <!-- Add Button -->
+    <div class="text-center">
+        <button id="btnAdd" class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-target="#modalAdd1">Añadir<i class="fas fa-plus-square ml-1"></i></button>
+    </div>
+    <!-- Add Button -->
+
+    <!-- Edit Form -->
+    <div class="modal fade modalEditClass" id="modalEdit1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Edit form</h4>
+                    <button type="button" class="close text-secondary" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <input type="text" id="formNameEdit1" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formNameEdit1">Name</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                        <input type="text" id="formPositionEdit1" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formPositionEdit1">Position</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                        <input type="text" id="formOfficeEdit1" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formOfficeEdit1">Office</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                        <input type="text" id="formAgeEdit1" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formAgeEdit1">Age</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                        <input type="text" id="formDateEdit1" class="form-control datepicker">
+                        <label data-error="wrong" data-success="right" for="formDateEdit1">Date</label>
+                    </div>
+
+                    <div class="md-form mb-5">
+                        <input type="text" id="formSalaryEdit1" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formSalaryEdit1">Salary</label>
+                    </div>
+                    <div class="md-form mb-5">
+                        <input type="text" id="formSalaryEdit1ex" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="formSalaryEdit1ex">Example</label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center editInsideWrapper">
+                    <button class="btn btn-outline-secondary btn-block editInside" data-dismiss="modal">Edit
+                form
+                <i class="fas fa-paper-plane-o ml-1"></i>
+              </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Form -->
+
+    <!-- Edit Button -->
+    <div class="text-center buttonEditWrapper">
+        <button class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#modalEdit1" disabled>Editar<i class="fas fa-pencil-square-o ml-1"></i></button>
+    </div>
+    <!-- Edit Button -->
+
+    <!-- Delete Button -->
+    <div class="text-center">
+        <button class="btn btn-danger btn-sm btn-rounded buttonDelete" data-toggle="modal" disabled data-target="#modalDelete" disabled>Eliminar<i class="fas fa-times ml-1"></i></button>
+    </div>
+    <!-- Delete Button -->
+
+    <!-- Table -->
+    <table id="example" class="table table-striped table-bordered my-4" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="th-sm text-center"><b>#</b></th>
+                <th class="th-sm text-center" *ngFor="let item of keys"><b>{{ item }}</b></th>
+            </tr>
+        </thead>
+        <tbody *ngIf="place == 'usuarios'">
+            <tr *ngFor="let item of data; let i = index" (click)="select(item.id)">
+                <!-- <td class="text-center">{{ item.id }}</td> -->
+                <td class="text-center">{{ i+1 }}</td>
+                <td class="text-center">{{ item.username }}</td>
+                <td class="text-center">{{ item.email }}</td>
+                <td class="text-center">{{ item.nombre }}</td>
+                <td class="text-center">{{ item.apellidos }}</td>
+                <td class="text-center">{{ item.tipo }}</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="place == 'cursos'">
+            <tr *ngFor="let item of data; let i = index" (click)="select(item.id)">
+                <td class="text-center" hidden>{{ item.id }}</td>
+                <td class="text-center">{{ i+1 }}</td>
+                <td class="text-center">{{ item.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Table -->
+</div>

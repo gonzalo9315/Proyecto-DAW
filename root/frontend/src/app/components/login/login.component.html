@@ -1,0 +1,75 @@
+<div id="content" class="row">
+    <div class="col-md py-5 deep-purple lighten-2">
+        <div class="card w-50 animated zoomIn" *ngIf="!register" style="left: 22%;">
+            <div class="card-header text-center text-white deep-purple darken-3">Iniciar Sesión</div>
+
+            <div class="card-body">
+                <form autocomplete="off" [formGroup]="forma" (ngSubmit)="login()">
+
+
+                    <div class="form-group row">
+                        <label for="username" class="col-md-4 col-form-label text-md-right">Usuario</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" formControlName="username" [class.is-invalid]="invalid('username') || onSubmit()">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
+
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" formControlName="password" [class.is-invalid]="invalid('password') || onSubmit()">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+
+                                <label class="form-check-label" for="remember">
+                                        Recuerdame
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-8 offset-md-3">
+                            <button type="submit" class="btn btn-deep-purple">
+                                    Iniciar Sesión
+                                </button>
+                            <button type="button" (click)="cambiarForm()" class="btn btn-deep-purple">
+                                    <i class="fas fa-arrow-right"></i> Registrarse
+                                </button>
+                            <a class="btn btn-link" href="">
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <app-register (login)="register = $event" *ngIf="register"></app-register>
+    </div>
+    <div class="col-md text-center py-5 deep-purple z-depth-1-half">
+        <section class="container animated zoomIn" style="color:whitesmoke;">
+            <h2>Aplicación para realizar exámenes de contabilidad</h2>
+            <p class="py-3">Para acceder al sistema tómese un minuto para crear una cuenta. Cada curso puede disponer de una "clave de acceso" que sólo tendrá que usar la primera vez. Estos son los pasos:</p>
+            <ol>
+                <li>Rellene el Formulario de Registro con sus datos.</li>
+                <hr>
+                <li>El sistema le enviará un correo para verificar que su dirección sea correcta.</li>
+                <hr>
+                <li>Su registro será confirmado y usted podrá acceder.</li>
+                <hr>
+                <li>Seleccione el curso en el que desea participar.</li>
+                <hr>
+                <li>Si algún curso en particular le solicita una "clave de acceso", utilice la que le facilita el profesor correspondiente.</li>
+                <hr>
+                <li>A partir de ese momento no necesitará utilizar más que su nombre de usuario y contraseña en el formulario de la página para entrar a cualquier curso en el que esté matriculado.</li>
+            </ol>
+        </section>
+    </div>
+</div>

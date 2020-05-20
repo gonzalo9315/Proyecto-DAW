@@ -1,0 +1,134 @@
+<div class="container">
+    <div class="container">
+        <div class="row py-5">
+            <!-- News jumbotron -->
+            <div class="jumbotron text-center hoverable p-4" *ngIf="rol =='direccion'">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                            <a (click)="ir('usuarios')">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                        <!-- Excerpt -->
+                        <a class="green-text">
+                            <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> {{rol}}</h6>
+                        </a>
+
+                        <h4 class="h4 mb-4">Usuarios</h4>
+
+                        <p class="font-weight-normal">Ver usuarios, editarlos y crearlos.</p>
+
+                        <a class="btn btn-success" (click)="ir('usuarios')">Ir</a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- News jumbotron -->
+
+            <!-- News jumbotron -->
+            <div class="jumbotron text-center hoverable p-4" *ngIf="rol == 'direccion'">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                            <a (click)="ir('cursos')">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                        <!-- Excerpt -->
+                        <a class="green-text">
+                            <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> {{rol}}</h6>
+                        </a>
+
+                        <h4 class="h4 mb-4">Cursos</h4>
+
+                        <p class="font-weight-normal">Ver cursos, editarlos y crearlos.</p>
+
+                        <a class="btn btn-success" (click)="ir('cursos')">Ir</a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- News jumbotron -->
+
+            <!-- News jumbotron -->
+            <div class="jumbotron text-center hoverable p-4">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                            <a (click)="ir('cuenta')">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                        <!-- Excerpt -->
+                        <a class="green-text">
+                            <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> {{rol}}</h6>
+                        </a>
+
+                        <h4 class="h4 mb-4">Cuenta</h4>
+
+                        <p class="font-weight-normal">Ver datos de tu cuenta y actualizarlos.</p>
+
+                        <a class="btn btn-success" (click)="ir('cuenta')">Ir</a>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+            <!-- News jumbotron -->
+        </div>
+    </div>
+</div>

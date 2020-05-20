@@ -1,0 +1,33 @@
+/*html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*overflow: auto;
+}*/
+
+
+/*
+.active {
+    color: #fff;
+    background: #212121;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}*/
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

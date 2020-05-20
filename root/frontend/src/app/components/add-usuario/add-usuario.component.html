@@ -1,0 +1,127 @@
+<div>
+    <div class="add-title">
+        <h2 class="primary">Nuevo Usuario</h2>
+    </div>
+    <div>
+        <form #form="ngForm" [formGroup]="addCusForm" (change)="formChanged()" autocomplete="off">
+            <mat-grid-list cols="2" [cols]="breakpoint" rowHeight="85px" (window:resize)="onResize($event)">
+
+                <!-- Username -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field>
+                            <input matInput placeholder="Nombre de usuario" formControlName="username" required>
+                            <mat-error *ngIf="addCusForm.controls.username.hasError('required')">
+                                Nombre de usuario obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="addCusForm.controls.username.hasError('minlength')">
+                                Debe ser minimo de 8 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Username -->
+
+                <!-- Password -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Contraseña" formControlName="password" required>
+                            <mat-error *ngIf="addCusForm.controls.password.hasError('required')">
+                                Contraseña obligatoria.
+                            </mat-error>
+                            <mat-error *ngIf="addCusForm.controls.password.hasError('minlength')">
+                                Debe ser minimo de 8 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Password -->
+
+                <!-- Password_confirmation -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Confirmar Contraseña" formControlName="password_confirmation" required>
+                            <mat-error *ngIf="invalid('password_confirmation')">
+                                No coincide con la contraseña.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Password_confirmation -->
+
+                <!-- Email -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Correo electronico" formControlName="email" required>
+                            <mat-error *ngIf="addCusForm.controls.email.hasError('required')">
+                                Correo electronico obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="addCusForm.controls.email.hasError('pattern')">
+                                Formato invalido.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Email -->
+
+                <!-- Nombre -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field>
+                            <input matInput placeholder="Nombre" formControlName="nombre" required>
+                            <mat-error *ngIf="addCusForm.controls.nombre.hasError('required')">
+                                Nombre de usuario obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="addCusForm.controls.nombre.hasError('minlength')">
+                                Debe ser minimo de 4 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Nombre -->
+
+                <!-- Apellidos -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-form-field>
+                            <input matInput placeholder="Apellidos" formControlName="apellidos" required>
+                            <mat-error *ngIf="addCusForm.controls.apellidos.hasError('required')">
+                                Apellidos obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="addCusForm.controls.apellidos.hasError('minlength')">
+                                Debe ser minimo de 4 caracteres.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </mat-grid-tile>
+                <!-- Apellidos -->
+
+                <!-- Tipo -->
+                <mat-grid-tile>
+                    <div class="text-inside">
+                        <mat-radio-group class="gender" formControlName="tipo">
+                            <div class="my-1" style="color:grey;">Tipo *</div>
+                            <mat-radio-button color="primary" style="padding:4px 4px 0px 0px;" value="alumno">Alumno</mat-radio-button>
+                            <mat-radio-button color="primary" style="padding:4px 0px 0px 24px;" value="profesor">Profesor</mat-radio-button>
+                            <mat-radio-button color="primary" style="padding:4px 0px 0px 24px;" value="direccion">Dirección</mat-radio-button>
+                        </mat-radio-group>
+                        <small class="text-danger my-2" *ngIf="onSubmit('tipo')">
+                            Tipo obligatorio.
+                        </small>
+                    </div>
+                </mat-grid-tile>
+                <!-- Tipo -->
+
+            </mat-grid-list>
+
+            <div class="btn-sec">
+                <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="createUser()">Añadir</button>
+                <button mat-raised-button type="button" class="Discard-btn" (click)="closeDialog()">Cancelar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
