@@ -73,7 +73,7 @@
                         <mat-form-field>
                             <input matInput placeholder="Nombre" formControlName="nombre" required>
                             <mat-error *ngIf="addCusForm.controls.nombre.hasError('required')">
-                                Nombre de usuario obligatorio.
+                                Nombre obligatorio.
                             </mat-error>
                             <mat-error *ngIf="addCusForm.controls.nombre.hasError('minlength')">
                                 Debe ser minimo de 4 caracteres.

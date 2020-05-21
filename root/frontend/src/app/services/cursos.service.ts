@@ -19,12 +19,24 @@ export class CursosService {
 
   register( data: CursoModel[]) {
 
-    return this.http.post(`${ this.url }/cursos/create`, data).pipe( map( (resp: any) => resp ));
+    const headers = new HttpHeaders({
+
+      responseType: 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    });
+
+    return this.http.post(`${ this.url }/cursos/create`, data, { headers }).pipe( map( (resp: any) => resp ));
   }
 
   update( data: CursoModel ){
 
-    return this.http.post(`${ this.url }/curso/update`, data).pipe( map( (resp: any) => resp ));
+    const headers = new HttpHeaders({
+
+      responseType: 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    });
+
+    return this.http.post(`${ this.url }/curso/update`, data, { headers }).pipe( map( (resp: any) => resp ));
   }
 
   getCurso( id: number ) {

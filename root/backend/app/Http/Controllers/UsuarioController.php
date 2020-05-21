@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
@@ -13,12 +14,12 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index()
     {
         // $token = $request->bearerToken();
-        $authUser = $request->user();
+        $authUser = Auth()->user();
 
-        if ( $authUser->rol == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $users = User::all();
             return response()->json($users);  
@@ -40,9 +41,10 @@ class UsuarioController extends Controller
     public function create( Request $request )
     {
 
-        $authUser = $request->user();
-
-        if ( $authUser['rol'] == 'direccion' ) {
+        $authUser = auth('api')->user();
+        // return response()->json($authUser); 
+         
+        if ( $authUser->tipo == 'direccion' ) {
 
             $request->validate([
                 'username' => 'required|string|unique:users|min:4',
@@ -56,7 +58,8 @@ class UsuarioController extends Controller
                 'password' => Hash::make($request->password),
                 'email' => $request->email,
                 'nombre' => $request->nombre,
-                'apellidos' => $request->apellidos
+                'apellidos' => $request->apellidos,
+                'tipo' => $request->tipo
             ]);
             $user->save();
             return response()->json([
@@ -78,9 +81,9 @@ class UsuarioController extends Controller
      */
     public function show( $id )
     {
-        $authUser = $id->user();
+        $authUser = Auth()->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $user = User::where('id', $id)->first();
             return response()->json($user);
@@ -101,9 +104,9 @@ class UsuarioController extends Controller
      */
     public function update( Request $request )
     {
-        $authUser = $request->user();
+        $authUser = Auth('api')->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $request->validate([
                 'nombre' => 'required|string|min:4',
@@ -139,9 +142,9 @@ class UsuarioController extends Controller
      */
     public function destroy( $id )
     {
-        $authUser = $id->user();
-
-        if ( $authUser['rol'] == 'direccion' ) {
+        $authUser = Auth()->user();
+        
+        if ( $authUser->tipo === 'direccion' ) {
 
             User::destroy($id);
             return response()->json([

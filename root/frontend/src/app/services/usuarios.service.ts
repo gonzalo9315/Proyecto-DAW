@@ -17,14 +17,26 @@ export class UsuariosService {
     this.userToken = localStorage.getItem('token');
   }
 
-  register( data: UsuarioModel[]) {
+  register( data ) {
 
-    return this.http.post(`${ this.url }/usuario/create`, data).pipe( map( (resp: any) => resp ));
+    const headers = new HttpHeaders({
+
+      responseType: 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    });
+
+    return this.http.post(`${ this.url }/usuario/create`, data, { headers }).pipe( map( (resp: any) => resp ));
   }
 
-  update( data: UsuarioModel ){
+  update( data ){
 
-    return this.http.post(`${ this.url }/usuario/update`, data).pipe( map( (resp: any) => resp ));
+    const headers = new HttpHeaders({
+
+      responseType: 'application/json',
+      Authorization: `Bearer ${this.userToken}`,
+    });
+
+    return this.http.post(`${ this.url }/usuario/update`, data, { headers }).pipe( map( (resp: any) => resp ));
   }
 
   getUser( id: number ) {

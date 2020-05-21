@@ -14,9 +14,9 @@ class CursoController extends Controller
      */
     public function index( Request $request )
     {
-        $authUser = $request->user();
+        $authUser = Auth()->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $cursos = Curso::all();
             return response()->json( $cursos );  
@@ -36,9 +36,9 @@ class CursoController extends Controller
      */
     public function create( Request $request )
     {
-        $authUser = $request->user();
+        $authUser = Auth('api')->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $request->validate([
                 'nombre' => 'required|string|min:8',
@@ -66,9 +66,9 @@ class CursoController extends Controller
      */
     public function show( $id )
     {
-        $authUser = $id->user();
+        $authUser = Auth()->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $curso = Curso::where('id', $id)->first();
             return response()->json($curso);
@@ -101,9 +101,9 @@ class CursoController extends Controller
      */
     public function update( Request $request )
     {
-        $authUser = $request->user();
+        $authUser = Auth('api')->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             $request->validate([
                 'nombre' => 'required|string|min:4',
@@ -130,9 +130,9 @@ class CursoController extends Controller
      */
     public function destroy( $id )
     {
-        $authUser = $id->user();
+        $authUser = Auth()->user();
 
-        if ( $authUser['rol'] == 'direccion' ) {
+        if ( $authUser->tipo == 'direccion' ) {
 
             Curso::destroy($id);
             return response()->json([

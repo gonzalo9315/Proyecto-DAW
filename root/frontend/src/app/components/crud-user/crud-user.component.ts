@@ -76,7 +76,7 @@ export class CrudUserComponent implements OnInit {
     const dialogRef = this.dialog.open( AddUsuarioComponent, {
       width: '640px', disableClose: true
     });
-    dialogRef.afterClosed().subscribe( (resp: any) => {
+    dialogRef.afterClosed().subscribe( () => {
 
       this.select(this.itemId);
       this.read();
@@ -88,7 +88,7 @@ export class CrudUserComponent implements OnInit {
     const dialogRef = this.dialog.open( EditUsuarioComponent, {
       data: this.itemId, width: '640px', disableClose: true, 
     });
-    dialogRef.afterClosed().subscribe( (resp: any) => {
+    dialogRef.afterClosed().subscribe( () => {
 
       this.select(this.itemId);
       this.read();
@@ -108,8 +108,12 @@ export class CrudUserComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-        this.service.delete( this.itemId ).subscribe();
-        this.read();
+        this.service.delete( this.itemId ).subscribe( () => {
+
+          this.select(this.itemId);
+          this.read();
+        });
+
         Swal.fire(
           '¡Eliminado!',
           'Usuario eliminado con exito',

@@ -29,8 +29,8 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
         //Passport::routes(null, array('prefix' => 'api/oauth', 'middleware'  =>  array('auth:api', 'web', 'auth')));
-        //Passport::tokensExpireIn(Carbon::now()->addDays(15));
-        //Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
-        Passport::cookie('authCookie');
+        Passport::tokensExpireIn(Carbon::now()->addDays(15));
+        Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
+        //Passport::cookie('authCookie');
     }
 }
